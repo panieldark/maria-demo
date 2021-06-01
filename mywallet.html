@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Wallet</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/css/animsition.min.css"
+		integrity="sha512-SagM1PHxt5mWDyWARVY6UOdhM5A8J+R1UqIWcGfiwOd+be7uHQagB+JQOmfVZF8jjJQqbyuWzw/KXfb4yqjBkQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/js/animsition.min.js"
+		integrity="sha512-pYd2QwnzV9JgtoARJf1Ui1q5+p1WHpeAz/M0sUJNprhDviO4zRo12GLlk4/sKBRUCtMHEmjgqo5zcrn8pkdhmQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+</head>
+
+
+<body class='animsition'>
+
+	<!-- Navbar -->
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+
+			<a class="navbar-brand" href="#">Defi Today</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="./index.html">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="./mywallet.html">Wallet</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Pricing</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Disabled</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+
+
+	<div class="container pt-5">
+
+
+
+		<!-- Content -->
+
+		<h2>My Wallet</h2>
+
+
+		<div class="row">
+			<div class="col-6">
+
+				<canvas id="myChart" width="400" height="400"></canvas>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+</body>
+
+</html>
+
+
+
+<script>
+	$(document).ready(function () {
+		$(".animsition").animsition({
+			inClass: 'fade-in',
+			outClass: 'fade-out',
+			inDuration: 1500,
+			outDuration: 800,
+			linkElement: '.animsition-link',
+			// e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+			loading: true,
+			loadingParentElement: 'body', //animsition wrapper element
+			loadingClass: 'animsition-loading',
+			loadingInner: '<div class="loader05"></div>',
+			timeout: false,
+			timeoutCountdown: 5000,
+			onLoadEvent: true,
+			browser: ['animation-duration', '-webkit-animation-duration'],
+			// "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+			// The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+			overlay: false,
+			overlayClass: 'animsition-overlay-slide',
+			overlayParentElement: 'body',
+			transition: function (url) { window.location.href = url; }
+		});
+	});
+</script>
+
+
+<script>
+
+	const labels = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+	];
+
+	const data = {
+		labels: labels,
+		datasets: [{
+			label: 'My First dataset',
+			backgroundColor: 'rgb(255, 99, 132)',
+			borderColor: 'rgb(255, 99, 132)',
+			data: [0, 10, 5, 2, 20, 30, 45],
+		}]
+	};
+	const config = {
+		type: 'line',
+		data,
+		options: {}
+	};
+
+	var myChart = new Chart(
+		document.getElementById('myChart'),
+		config
+	);
+</script>
